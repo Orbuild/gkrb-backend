@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gkrb.mapper.MTMapper">
+  <resultMap id="BaseResultMap" type="com.example.gkrb.model.MT">
+    <id column="message_id" jdbcType="INTEGER" property="messageId" />
+    <id column="tag_id" jdbcType="INTEGER" property="tagId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from mt
+    where message_id = #{messageId,jdbcType=INTEGER}
+      and tag_id = #{tagId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.gkrb.model.MT">
+    insert into mt (message_id, tag_id)
+    values (#{messageId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.gkrb.model.MT">
+    insert into mt
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="messageId != null">
+        message_id,
+      </if>
+      <if test="tagId != null">
+        tag_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="messageId != null">
+        #{messageId,jdbcType=INTEGER},
+      </if>
+      <if test="tagId != null">
+        #{tagId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

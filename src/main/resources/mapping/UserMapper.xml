@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gkrb.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.gkrb.model.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="student_id" jdbcType="VARCHAR" property="studentId" />
+    <result column="training_unit" jdbcType="VARCHAR" property="trainingUnit" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="academy" jdbcType="VARCHAR" property="academy" />
+    <result column="class_num" jdbcType="VARCHAR" property="classNum" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="identity" jdbcType="INTEGER" property="identity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, password, avatar, name, register_time, student_id, training_unit, major, 
+    academy, class_num, email, level, identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.gkrb.model.User">
+    insert into user (user_id, password, avatar, 
+      name, register_time, student_id, 
+      training_unit, major, academy, 
+      class_num, email, level, 
+      identity)
+    values (#{userId,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{studentId,jdbcType=VARCHAR}, 
+      #{trainingUnit,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{academy,jdbcType=VARCHAR}, 
+      #{classNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{identity,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.gkrb.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="trainingUnit != null">
+        training_unit,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="academy != null">
+        academy,
+      </if>
+      <if test="classNum != null">
+        class_num,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingUnit != null">
+        #{trainingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="academy != null">
+        #{academy,jdbcType=VARCHAR},
+      </if>
+      <if test="classNum != null">
+        #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.gkrb.model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentId != null">
+        student_id = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingUnit != null">
+        training_unit = #{trainingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="academy != null">
+        academy = #{academy,jdbcType=VARCHAR},
+      </if>
+      <if test="classNum != null">
+        class_num = #{classNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.gkrb.model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      student_id = #{studentId,jdbcType=VARCHAR},
+      training_unit = #{trainingUnit,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      academy = #{academy,jdbcType=VARCHAR},
+      class_num = #{classNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      identity = #{identity,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
