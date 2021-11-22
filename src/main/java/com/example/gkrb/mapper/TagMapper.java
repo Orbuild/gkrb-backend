@@ -14,6 +14,8 @@ public interface TagMapper {
 
     Tag selectByPrimaryKey(Integer tagId);
 
+    Tag selectByTagValue(String value);
+
     int updateByPrimaryKeySelective(Tag record);
 
     int updateByPrimaryKey(Tag record);

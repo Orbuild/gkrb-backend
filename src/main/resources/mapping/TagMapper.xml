@@ -14,11 +14,20 @@
     from tag
     where tag_id = #{tagId,jdbcType=INTEGER}
   </select>
+
+  <!-- 新增  -->
+  <select id="selectByTagValue" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tag
+    where value = #{value,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tag
     where tag_id = #{tagId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.gkrb.model.Tag">
+  <insert id="insert" parameterType="com.example.gkrb.model.Tag" useGeneratedKeys="true" keyProperty="tagId">
     insert into tag (tag_id, value)
     values (#{tagId,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR})
   </insert>

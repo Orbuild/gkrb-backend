@@ -31,7 +31,7 @@
       #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{pictures,jdbcType=VARCHAR}, 
       #{likes,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.gkrb.model.Message">
+  <insert id="insertSelective" parameterType="com.example.gkrb.model.Message" useGeneratedKeys="true" keyProperty="messageId">
     insert into message
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="messageId != null">
