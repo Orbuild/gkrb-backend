@@ -6,9 +6,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MTMapper {
+
     int deleteByPrimaryKey(@Param("messageId") Integer messageId, @Param("tagId") Integer tagId);
 
     int insert(MT record);
 
     int insertSelective(MT record);
+
 }

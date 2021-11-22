@@ -3,7 +3,7 @@
 <mapper namespace="com.example.gkrb.mapper.CommentMapper">
   <resultMap id="BaseResultMap" type="com.example.gkrb.model.Comment">
     <id column="comment_id" jdbcType="INTEGER" property="commentId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp" />
     <result column="message_id" jdbcType="INTEGER" property="messageId" />
   </resultMap>
@@ -31,7 +31,7 @@
   <insert id="insert" parameterType="com.example.gkrb.model.Comment">
     insert into comment (comment_id, user_id, timestamp, 
       message_id, content)
-    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{timestamp,jdbcType=TIMESTAMP}, 
+    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP}, 
       #{messageId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.gkrb.model.Comment">
@@ -58,7 +58,7 @@
         #{commentId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="timestamp != null">
         #{timestamp,jdbcType=TIMESTAMP},
@@ -75,7 +75,7 @@
     update comment
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="timestamp != null">
         timestamp = #{timestamp,jdbcType=TIMESTAMP},
@@ -91,7 +91,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.gkrb.model.Comment">
     update comment
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=VARCHAR},
       timestamp = #{timestamp,jdbcType=TIMESTAMP},
       message_id = #{messageId,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -99,7 +99,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.gkrb.model.Comment">
     update comment
-    set user_id = #{userId,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=VARCHAR},
       timestamp = #{timestamp,jdbcType=TIMESTAMP},
       message_id = #{messageId,jdbcType=INTEGER}
     where comment_id = #{commentId,jdbcType=INTEGER}

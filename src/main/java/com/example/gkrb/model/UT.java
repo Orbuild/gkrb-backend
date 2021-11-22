@@ -1,23 +1,12 @@
 package com.example.gkrb.model;
 
+import lombok.Data;
+
+@Data
 public class UT {
+
     private Integer tagId;
 
-    private Integer userId;
+    private String userId;
 
-    public Integer getTagId() {
-        return tagId;
-    }
-
-    public void setTagId(Integer tagId) {
-        this.tagId = tagId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 }

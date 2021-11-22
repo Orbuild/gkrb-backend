@@ -6,9 +6,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UTMapper {
-    int deleteByPrimaryKey(@Param("tagId") Integer tagId, @Param("userId") Integer userId);
+
+    int deleteByPrimaryKey(@Param("tagId") Integer tagId, @Param("userId") String userId);
 
     int insert(UT record);
 
     int insertSelective(UT record);
+
 }

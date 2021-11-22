@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommentMapper {
+
     int deleteByPrimaryKey(Integer commentId);
 
     int insert(Comment record);
@@ -18,4 +19,5 @@ public interface CommentMapper {
     int updateByPrimaryKeyWithBLOBs(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
 }
