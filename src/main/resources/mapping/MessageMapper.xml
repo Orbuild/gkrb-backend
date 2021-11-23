@@ -19,6 +19,15 @@
     from message
     where message_id = #{messageId,jdbcType=INTEGER}
   </select>
+
+  <!-- 新增 -->
+  <select id="selectAllMessages" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from message
+    order by timestamp desc
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from message
     where message_id = #{messageId,jdbcType=INTEGER}

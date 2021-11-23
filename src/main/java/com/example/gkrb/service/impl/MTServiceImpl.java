@@ -6,15 +6,20 @@ import com.example.gkrb.service.MTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MTServiceImpl implements MTService {
 
     @Autowired
     private MTMapper mtMapper;
 
-    public int insert(MT mt) {
+    public void insert(MT mt) {
         mtMapper.insert(mt);
-        return 1;
+    }
+
+    public List<MT> getMTByMessageId(int messageId) {
+        return mtMapper.getMTByMessageId(messageId);
     }
 
 }

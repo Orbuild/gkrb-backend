@@ -5,6 +5,7 @@ import com.example.gkrb.dto.UserRegisterParam;
 import com.example.gkrb.mapper.UserMapper;
 import com.example.gkrb.model.User;
 import com.example.gkrb.service.UserService;
+import com.example.gkrb.utils.TimeUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         BeanUtils.copyProperties(userRegisterParam, user);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        user.setRegisterTime(formatter.parse(userRegisterParam.getRegisterTime()));
+        user.setRegisterTime(TimeUtil.StringToDate(userRegisterParam.getRegisterTime()));
 
         // 用户已经存在
         if(getUserById(user.getUserId()) != null) {

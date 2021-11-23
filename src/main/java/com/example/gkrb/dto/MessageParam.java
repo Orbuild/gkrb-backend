@@ -15,7 +15,7 @@ public class MessageParam {
 
     private String content;
 
-    private String pictures;
+    private String[] pictures;
 
     private Integer likes;
 

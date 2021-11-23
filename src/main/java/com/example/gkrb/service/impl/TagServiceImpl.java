@@ -6,6 +6,8 @@ import com.example.gkrb.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TagServiceImpl implements TagService {
 
@@ -21,6 +23,10 @@ public class TagServiceImpl implements TagService {
             return tag.getTagId();
         }
         return queryTag.getTagId();
+    }
+
+    public Tag getTagByTagId(int tagId) {
+        return tagMapper.selectByPrimaryKey(tagId);
     }
 
 }

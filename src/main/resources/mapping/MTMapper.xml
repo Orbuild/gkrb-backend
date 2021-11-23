@@ -5,6 +5,11 @@
     <id column="message_id" jdbcType="INTEGER" property="messageId" />
     <id column="tag_id" jdbcType="INTEGER" property="tagId" />
   </resultMap>
+
+  <sql id="Base_Column_List">
+    message_id, tag_id
+  </sql>
+
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from mt
     where message_id = #{messageId,jdbcType=INTEGER}
@@ -33,4 +38,19 @@
       </if>
     </trim>
   </insert>
+
+  <!-- 新增 -->
+  <select id="getMTByMessageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mt
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getMtByTagId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mt
+    where tag_id = #{tagId,jdbcType=INTEGER}
+  </select>
 </mapper>

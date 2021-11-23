@@ -4,6 +4,8 @@ import com.example.gkrb.model.MT;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MTMapper {
 
@@ -12,5 +14,9 @@ public interface MTMapper {
     int insert(MT record);
 
     int insertSelective(MT record);
+
+    List<MT> getMTByMessageId(int messageId);
+
+    List<MT> getMtByTagId(int tagId);
 
 }
