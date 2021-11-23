@@ -12,6 +12,7 @@ import com.example.gkrb.model.MT;
 import com.example.gkrb.model.Message;
 import com.example.gkrb.model.Tag;
 import com.example.gkrb.model.User;
+import com.example.gkrb.service.CommentService;
 import com.example.gkrb.service.MTService;
 import com.example.gkrb.service.MessageService;
 import com.example.gkrb.service.TagService;
@@ -49,6 +50,9 @@ public class MessageServiceImpl implements MessageService {
 
     @Autowired
     private MTService mtService;
+
+    @Autowired
+    private CommentService commentService;
 
     // 添加消息
     public void create(MessageParam messageParam) throws ParseException {
@@ -98,6 +102,9 @@ public class MessageServiceImpl implements MessageService {
 
         // 获取消息对应的tag列表
         List<MT> mtList = mtService.getMTByMessageId(message.getMessageId());
+
+        // 获取评论列表
+        messageDetailsParam.setCommentDetailsList(commentService.getCommentDetailsByMessageId(messageId));
 
         List<String> tagValues = new ArrayList<>();
 

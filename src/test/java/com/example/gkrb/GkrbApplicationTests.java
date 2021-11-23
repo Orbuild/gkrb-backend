@@ -107,7 +107,7 @@ class GkrbApplicationTests {
 
     @Test
     void test7() {
-        System.out.println(messageService.getMessages(1, 2));
+        System.out.println(messageService.getMessages(1, 10));
     }
 
     @Test

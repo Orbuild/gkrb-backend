@@ -1,7 +1,10 @@
 package com.example.gkrb.dto;
 
+import com.example.gkrb.model.Comment;
 import com.example.gkrb.model.User;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class MessageDetailsParam {
@@ -23,5 +26,8 @@ public class MessageDetailsParam {
 
     // 消息对应的tag列表
     private String[] tagValues;
+
+    // 消息的评论
+    private List<CommentDetailsParam> commentDetailsList;
 
 }

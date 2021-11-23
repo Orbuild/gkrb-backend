@@ -3,6 +3,8 @@ package com.example.gkrb.mapper;
 import com.example.gkrb.model.Comment;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CommentMapper {
 
@@ -13,6 +15,8 @@ public interface CommentMapper {
     int insertSelective(Comment record);
 
     Comment selectByPrimaryKey(Integer commentId);
+
+    List<Comment> getCommentsByMessageId(int messageId);
 
     int updateByPrimaryKeySelective(Comment record);
 

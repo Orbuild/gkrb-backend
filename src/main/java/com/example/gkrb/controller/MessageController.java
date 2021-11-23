@@ -31,8 +31,8 @@ public class MessageController {
     }
 
     @GetMapping("/getMessagesByTags")
-    public void getMessagesByTags(@RequestParam String tagValues, @RequestParam int pageNum, @RequestParam int pageSize) {
-        //return BaseResponse.success("Get messages successfully", messageService.getMessages(pageNum, pageSize));
+    public BaseResponse<PageInfo<MessageDetailsParam>> getMessagesByTags(@RequestParam List<String> tagValues, @RequestParam int pageNum, @RequestParam int pageSize) {
+        return BaseResponse.success("Get messages successfully", messageService.getMessagesByTags(tagValues, pageNum, pageSize));
     }
 
 
