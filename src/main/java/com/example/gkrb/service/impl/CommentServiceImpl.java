@@ -7,6 +7,7 @@ import com.example.gkrb.mapper.UserMapper;
 import com.example.gkrb.model.Comment;
 import com.example.gkrb.model.User;
 import com.example.gkrb.service.CommentService;
+import com.example.gkrb.service.UserService;
 import com.example.gkrb.utils.TimeUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
     public List<CommentDetailsParam> getCommentDetailsByMessageId(int messageId) {
         List<Comment> commentList = commentMapper.getCommentsByMessageId(messageId);
 
@@ -35,12 +39,8 @@ public class CommentServiceImpl implements CommentService {
 
             commentDetailsParam.setTimestamp(TimeUtil.DateToString(comment.getTimestamp()));
 
-            User user = userMapper.selectByPrimaryKey(comment.getUserId());
-            UserInfoParam userInfoParam = new UserInfoParam();
-            BeanUtils.copyProperties(user, userInfoParam);
-            userInfoParam.setRegisterTime(TimeUtil.DateToString(user.getRegisterTime()));
-
-            commentDetailsParam.setUserInfoParam(userInfoParam);
+            // 获取评论者个人信息
+            commentDetailsParam.setUserInfoParam(userService.getUserInfoByUserId(comment.getUserId()));
 
             commentDetailsList.add(commentDetailsParam);
         }

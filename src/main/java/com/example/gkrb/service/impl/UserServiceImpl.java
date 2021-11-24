@@ -1,5 +1,6 @@
 package com.example.gkrb.service.impl;
 
+import com.example.gkrb.dto.UserInfoParam;
 import com.example.gkrb.dto.UserLoginParam;
 import com.example.gkrb.dto.UserRegisterParam;
 import com.example.gkrb.mapper.UserMapper;
@@ -46,6 +47,17 @@ public class UserServiceImpl implements UserService {
 
     public User getUserById(String userId) {
         return userMapper.selectByPrimaryKey(userId);
+    }
+
+    public UserInfoParam getUserInfoByUserId(String userId) {
+        User user = userMapper.selectByPrimaryKey(userId);
+
+        UserInfoParam userInfoParam = new UserInfoParam();
+        BeanUtils.copyProperties(user, userInfoParam);
+
+        userInfoParam.setRegisterTime(TimeUtil.DateToString(user.getRegisterTime()));
+
+        return userInfoParam;
     }
 
 }

@@ -12,10 +12,7 @@ import com.example.gkrb.model.MT;
 import com.example.gkrb.model.Message;
 import com.example.gkrb.model.Tag;
 import com.example.gkrb.model.User;
-import com.example.gkrb.service.CommentService;
-import com.example.gkrb.service.MTService;
-import com.example.gkrb.service.MessageService;
-import com.example.gkrb.service.TagService;
+import com.example.gkrb.service.*;
 import com.example.gkrb.utils.StringUtil;
 import com.example.gkrb.utils.TimeUtil;
 import com.github.pagehelper.PageHelper;
@@ -53,6 +50,9 @@ public class MessageServiceImpl implements MessageService {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private UserService userService;
 
     // 添加消息
     public void create(MessageParam messageParam) throws ParseException {
@@ -94,11 +94,7 @@ public class MessageServiceImpl implements MessageService {
         messageDetailsParam.setPictures(StringUtil.StringToArray(message.getPictures()));
 
         // 获取消息发布者的个人信息
-        User user = userMapper.selectByPrimaryKey(message.getUserId());
-        UserInfoParam userInfoParam = new UserInfoParam();
-        BeanUtils.copyProperties(user, userInfoParam);
-        userInfoParam.setRegisterTime(TimeUtil.DateToString(user.getRegisterTime()));
-        messageDetailsParam.setUserInfoParam(userInfoParam);
+        messageDetailsParam.setUserInfoParam(userService.getUserInfoByUserId(message.getUserId()));
 
         // 获取消息对应的tag列表
         List<MT> mtList = mtService.getMTByMessageId(message.getMessageId());
