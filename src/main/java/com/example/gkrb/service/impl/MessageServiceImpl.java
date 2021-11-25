@@ -21,6 +21,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Array;
 import java.text.ParseException;
@@ -55,6 +56,7 @@ public class MessageServiceImpl implements MessageService {
     private UserService userService;
 
     // 添加消息
+    @Transactional
     public void create(MessageParam messageParam) throws ParseException {
         Message message = new Message();
         BeanUtils.copyProperties(messageParam, message);
@@ -81,6 +83,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     // 根据消息ID获取消息的详细信息
+    @Transactional
     public MessageDetailsParam getMessageDetailsByMessageId(int messageId) {
         MessageDetailsParam messageDetailsParam = new MessageDetailsParam();
 
@@ -114,6 +117,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     // 获取消息列表
+    @Transactional
     public PageInfo<MessageDetailsParam> getMessages(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
 
@@ -128,6 +132,7 @@ public class MessageServiceImpl implements MessageService {
         return new PageInfo<>(messageDetailsList);
     }
 
+    @Transactional
     public PageInfo<MessageDetailsParam> getMessagesByTags(List<String> tagValues, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
 

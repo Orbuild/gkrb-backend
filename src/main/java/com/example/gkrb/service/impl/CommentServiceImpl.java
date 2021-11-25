@@ -12,6 +12,7 @@ import com.example.gkrb.utils.TimeUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private UserService userService;
 
+    @Transactional
     public List<CommentDetailsParam> getCommentDetailsByMessageId(int messageId) {
         List<Comment> commentList = commentMapper.getCommentsByMessageId(messageId);
 
