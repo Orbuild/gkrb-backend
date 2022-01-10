@@ -13,6 +13,6 @@ public interface MessageService {
 
     PageInfo<MessageDetailsParam> getMessages(int pageNum, int pageSize);
 
-    public PageInfo<MessageDetailsParam> getMessagesByTags(List<String> tagValues, int pageNum, int pageSize);
+    PageInfo<MessageDetailsParam> getMessagesByTags(List<String> tagValues, int pageNum, int pageSize);
 
 }
