@@ -40,7 +40,7 @@ public class UserController {
 
     @GetMapping("/getUserInfo")
     public BaseResponse<UserInfoParam> getUserInfo(@RequestParam String userId) {
-        return BaseResponse.success("Get messages successfully", userService.getUserInfoByUserId(userId));
+        return BaseResponse.success("Get userinfo successfully", userService.getUserInfoByUserId(userId));
     }
 
 
