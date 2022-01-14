@@ -15,12 +15,12 @@ public class MTServiceImpl implements MTService {
     @Autowired
     private MTMapper mtMapper;
 
-    @Transactional
+    // @Transactional
     public void insert(MT mt) {
         mtMapper.insert(mt);
     }
 
-    @Transactional
+    // @Transactional
     public List<MT> getMTByMessageId(int messageId) {
         return mtMapper.getMTByMessageId(messageId);
     }

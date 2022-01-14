@@ -15,7 +15,7 @@ public class TagServiceImpl implements TagService {
     @Autowired
     private TagMapper tagMapper;
 
-    @Transactional
+    // @Transactional
     public int insert(String value) {
         Tag queryTag = tagMapper.selectByTagValue(value);
         if(queryTag == null) {
@@ -27,7 +27,7 @@ public class TagServiceImpl implements TagService {
         return queryTag.getTagId();
     }
 
-    @Transactional
+    // @Transactional
     public Tag getTagByTagId(int tagId) {
         return tagMapper.selectByPrimaryKey(tagId);
     }

@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @MapperScan("com.example.gkrb.mapper")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class GkrbApplication {
 
     public static void main(String[] args) {

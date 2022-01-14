@@ -29,7 +29,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private UserService userService;
 
-    @Transactional
+    // @Transactional
     public List<CommentDetailsParam> getCommentDetailsByMessageId(int messageId) {
         List<Comment> commentList = commentMapper.getCommentsByMessageId(messageId);
 

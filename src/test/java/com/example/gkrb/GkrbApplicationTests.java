@@ -1,6 +1,7 @@
 package com.example.gkrb;
 
 import com.example.gkrb.dto.MessageParam;
+import com.example.gkrb.dto.UserInfoParam;
 import com.example.gkrb.dto.UserLoginParam;
 import com.example.gkrb.dto.UserRegisterParam;
 import com.example.gkrb.mapper.UserMapper;
@@ -54,7 +55,7 @@ class GkrbApplicationTests {
         userRegisterParam.setRegisterTime("2011-11-11 11:11:11");
         userRegisterParam.setName("222");
         userRegisterParam.setPassword("333");
-        userRegisterParam.setUserId("222qq.com");
+        userRegisterParam.setUserId("333qq.com");
         int insertState = userService.insert(userRegisterParam);
         System.out.println("insert state: " + insertState);
     }
@@ -159,6 +160,14 @@ class GkrbApplicationTests {
         });
 
         System.out.println(list.toString());
+
+    }
+
+    @Test
+    void test11() {
+        UserInfoParam userInfoParam = userService.getUserInfoByUserId("111qq.com");
+
+        System.out.println(userInfoParam);
 
     }
 

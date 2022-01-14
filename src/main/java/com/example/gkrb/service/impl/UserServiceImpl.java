@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Transactional
+    // @Transactional
     public int insert(UserRegisterParam userRegisterParam) throws ParseException {
         User user = new User();
         BeanUtils.copyProperties(userRegisterParam, user);
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    @Transactional
+    // @Transactional
     public int checkUser(UserLoginParam userLoginParam) {
         User user = getUserById(userLoginParam.getUserId());
         if(user == null) {
@@ -49,12 +49,12 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    @Transactional
+    // @Transactional
     public User getUserById(String userId) {
         return userMapper.selectByPrimaryKey(userId);
     }
 
-    @Transactional
+    // @Transactional
     public UserInfoParam getUserInfoByUserId(String userId) {
         User user = userMapper.selectByPrimaryKey(userId);
 

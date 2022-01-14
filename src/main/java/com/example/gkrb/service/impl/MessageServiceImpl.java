@@ -56,7 +56,7 @@ public class MessageServiceImpl implements MessageService {
     private UserService userService;
 
     // 添加消息
-    @Transactional
+    // @Transactional
     public void create(MessageParam messageParam) throws ParseException {
         Message message = new Message();
         BeanUtils.copyProperties(messageParam, message);
@@ -83,7 +83,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     // 根据消息ID获取消息的详细信息
-    @Transactional
+    // @Transactional
     public MessageDetailsParam getMessageDetailsByMessageId(int messageId) {
         MessageDetailsParam messageDetailsParam = new MessageDetailsParam();
 
@@ -117,7 +117,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     // 获取消息列表
-    @Transactional
+    // @Transactional
     public PageInfo<MessageDetailsParam> getMessages(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
 
@@ -132,7 +132,7 @@ public class MessageServiceImpl implements MessageService {
         return new PageInfo<>(messageDetailsList);
     }
 
-    @Transactional
+    // @Transactional
     public PageInfo<MessageDetailsParam> getMessagesByTags(List<String> tagValues, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
 
