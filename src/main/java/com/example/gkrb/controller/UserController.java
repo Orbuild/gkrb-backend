@@ -1,5 +1,6 @@
 package com.example.gkrb.controller;
 
+import com.example.gkrb.dto.UserInfoParam;
 import com.example.gkrb.dto.UserLoginParam;
 import com.example.gkrb.dto.UserRegisterParam;
 import com.example.gkrb.dto.response.BaseResponse;
@@ -36,6 +37,12 @@ public class UserController {
         }
         return BaseResponse.success("Login successfully", 1);
     }
+
+    @GetMapping("/getUserInfo")
+    public BaseResponse<UserInfoParam> getUserInfo(@RequestParam String userId) {
+        return BaseResponse.success("Get messages successfully", userService.getUserInfoByUserId(userId));
+    }
+
 
 
 
