@@ -15,4 +15,5 @@ public interface MessageService {
 
     PageInfo<MessageDetailsParam> getMessagesByTags(List<String> tagValues, int pageNum, int pageSize);
 
+    void delete(int messageId);
 }

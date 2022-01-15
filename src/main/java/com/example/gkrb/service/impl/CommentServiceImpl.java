@@ -1,6 +1,7 @@
 package com.example.gkrb.service.impl;
 
 import com.example.gkrb.dto.CommentDetailsParam;
+import com.example.gkrb.dto.CommentParam;
 import com.example.gkrb.dto.UserInfoParam;
 import com.example.gkrb.mapper.CommentMapper;
 import com.example.gkrb.mapper.UserMapper;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,19 @@ public class CommentServiceImpl implements CommentService {
         }
 
         return commentDetailsList;
+    }
+
+    public void create(CommentParam commentParam) throws ParseException {
+        Comment comment = new Comment();
+        BeanUtils.copyProperties(commentParam, comment);
+
+        comment.setTimestamp(TimeUtil.StringToDate(commentParam.getTimestamp()));
+
+        commentMapper.insertSelective(comment);
+    }
+
+    public void delete(int commentId) {
+        commentMapper.deleteByPrimaryKey(commentId);
     }
 
 }

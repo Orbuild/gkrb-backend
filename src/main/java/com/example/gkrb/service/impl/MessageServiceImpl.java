@@ -170,7 +170,9 @@ public class MessageServiceImpl implements MessageService {
         return new PageInfo<>(messageDetailsList);
     }
 
-
+    public void delete(int messageId) {
+        messageMapper.deleteByPrimaryKey(messageId);
+    }
 
 
 }

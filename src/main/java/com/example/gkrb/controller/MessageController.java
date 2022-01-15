@@ -35,5 +35,11 @@ public class MessageController {
         return BaseResponse.success("Get messages successfully", messageService.getMessagesByTags(tagValues, pageNum, pageSize));
     }
 
+    @GetMapping("/delete")
+    public BaseResponse<Integer> getMessages(@RequestParam int messageId) {
+        messageService.delete(messageId);
+        return BaseResponse.success("Delete the message successfully", 1);
+    }
+
 
 }
